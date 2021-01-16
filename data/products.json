@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "test1",
+    "type": "paint",
+    "costPrice": "12.34",
+    "cartage": 4,
+    "sellingPrice": 20
+  },
+  {
+    "id": 2,
+    "name": "fdsdsf",
+    "type": "notpaint",
+    "costPrice": "12.34",
+    "cartage": 4,
+    "sellingPrice": 70
+  },
+  {
+    "id": 3,
+    "name": "fsfds",
+    "type": "paint",
+    "costPrice": "16.34",
+    "cartage": 4,
+    "sellingPrice": 50
+  },
+  {
+    "id": 4,
+    "name": "retkju",
+    "type": "notpaint",
+    "costPrice": "12.34",
+    "cartage": 4,
+    "sellingPrice": 40
+  }
+]
