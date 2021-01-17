@@ -27,12 +27,12 @@ const updateItems = async (prods) => {
     method: "PUT",
     body: JSON.stringify(prods),
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     },
   })
     .then((data) => {
-        console.log(data);
-        showItems();
+      console.log(data);
+      showItems();
     })
     .catch((err) => console.log(err));
 };
@@ -60,7 +60,9 @@ const showItems = async () => {
                     <th>Badalna hai?</th>
                 </tr>`;
   table.innerHTML += th;
-    let i = 1;
+  let i = 1;
+  //products.sort((a, b) => (a.type > b.type) ? 1 : -1);
+
   products
     .filter((product) =>
       product.type.toLowerCase().includes(selected_category.toLowerCase())
@@ -80,16 +82,41 @@ const showItems = async () => {
       const product_sp = document.createElement("td");
       const product_edit = document.createElement("td");
       const product_delete = document.createElement("td");
-      
+
       product_index.innerText = i++;
       product_name.innerText = product.name;
-      product_type.innerText = product.type;
+      product_name.style.cssText = "font-size: 20px; font-weight: 700;";
+      product_type.innerText = product.type.toUpperCase();
+      switch (product.type) {
+        case "paint":
+          tr.style.cssText = "background-color: salmon";
+          break;
+        case "hardware":
+          tr.style.cssText = "background-color: cornflowerblue;";
+          break;
+        case "sanitory":
+          tr.style.cssText = "background-color: aquamarine;";
+          break;
+        default:
+      }
       product_cp.innerText = numberWithCommas(product.costPrice);
+      //product_cp.style.cssText = "background-color: bisque;";
       product_cartage.innerText = numberWithCommas(product.cartage);
-      product_tcp.innerText = numberWithCommas(+product.costPrice + +product.cartage);
+      //product_cartage.style.cssText = "background-color: cornsilk;";
+      product_tcp.innerText = numberWithCommas(
+        +product.costPrice + +product.cartage
+      );
+      //product_tcp.style.cssText = "background-color: bisque;";
       product_sp.innerText = numberWithCommas(product.sellingPrice);
-      product_edit.innerHTML += `<a class="btn" onclick="editModeON(`+ product.id +`)"><i class="icon-edit"></i> Edit</a>`;
-      product_delete.innerHTML += `<a class="btn" style="background-color: red;" onclick="deleteElement(`+ product.id +`)"><i class="icon-edit"></i> Delete</a>`;
+      product_sp.style.cssText = "font-size: 20px;font-weight: 700;";//"background-color: lawngreen;";
+      product_edit.innerHTML +=
+        `<a class="btn" onclick="editModeON(` +
+        product.id +
+        `)"><i class="icon-edit"></i> Edit</a>`;
+      product_delete.innerHTML +=
+        `<a class="btn" style="background-color: red;" onclick="deleteElement(` +
+        product.id +
+        `)"><i class="icon-edit"></i> Delete</a>`;
 
       tr.appendChild(product_index);
       tr.appendChild(product_name);
@@ -116,7 +143,7 @@ search_input.addEventListener("input", (e) => {
 });
 
 search_category.addEventListener("input", (e) => {
-    selected_category = e.target.value;
+  selected_category = e.target.value;
   // re-display countries again based on the new search_term
   showItems();
 });
@@ -130,23 +157,27 @@ document
     const cartage = item_cartage.value;
     const sp = item_sp.value;
 
-    if(selectedIDforEditing != "")
-        AddOrUpdateItem(name, type, cp, cartage, sp, selectedIDforEditing);
-    else
-        AddOrUpdateItem(name, type, cp, cartage, sp);
+    if (selectedIDforEditing != "")
+      AddOrUpdateItem(name, type, cp, cartage, sp, selectedIDforEditing);
+    else AddOrUpdateItem(name, type, cp, cartage, sp);
     emptyForm();
   });
 
-document
-  .getElementById("close-edit-button")
-  .addEventListener("click", (e) => {
-    emptyForm();
-  });
+document.getElementById("close-edit-button").addEventListener("click", (e) => {
+  emptyForm();
+});
 
 const AddOrUpdateItem = (name, type, cp, cartage, sp, id) => {
   if (name == "") return;
   if (id == null) {
-    let new_id = products ? Math.max.apply(Math, products.map(function(o) { return o.id; })) + 1 : 1;
+    let new_id = products
+      ? Math.max.apply(
+          Math,
+          products.map(function (o) {
+            return o.id;
+          })
+        ) + 1
+      : 1;
     let data = {
       id: new_id,
       name: name,
@@ -172,28 +203,29 @@ const AddOrUpdateItem = (name, type, cp, cartage, sp, id) => {
 };
 
 const deleteElement = (id) => {
-    for( var i = 0; i < products.length; i++){ 
-        if ( products[i].id === id) { 
-            products.splice(i, 1); 
-            break;
-        }
+  for (var i = 0; i < products.length; i++) {
+    if (products[i].id === id) {
+      products.splice(i, 1);
+      break;
     }
-    updateItems(products);
-}
+  }
+  updateItems(products);
+};
 
 const editModeON = (id) => {
-    selectedIDforEditing = id;
-    let prod = products.filter((obj) => {
-        return obj.id == id;
-    }); 
-    if(!!prod){
+  selectedIDforEditing = id;
+  let prod = products.filter((obj) => {
+    return obj.id == id;
+  });
+  if (!!prod) {
     item_name.value = prod[0].name;
     item_type.value = prod[0].type;
     item_cp.value = prod[0].costPrice;
     item_cartage.value = prod[0].cartage;
-    item_sp.value = prod[0].sellingPrice;}
-    $('#exampleModal').modal('show');
-}
+    item_sp.value = prod[0].sellingPrice;
+  }
+  $("#exampleModal").modal("show");
+};
 
 const emptyForm = () => {
   item_name.value = "";
