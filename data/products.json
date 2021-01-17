@@ -30,5 +30,29 @@
     "costPrice": "12.34",
     "cartage": 4,
     "sellingPrice": 40
+  },
+  {
+    "id": 5,
+    "name": "xsx",
+    "type": "paint",
+    "costPrice": "",
+    "cartage": "",
+    "sellingPrice": ""
+  },
+  {
+    "id": 6,
+    "name": "asian paint",
+    "type": "paint",
+    "costPrice": "230",
+    "cartage": "21",
+    "sellingPrice": "250"
+  },
+  {
+    "id": 7,
+    "name": "nerolac",
+    "type": "paint",
+    "costPrice": "332",
+    "cartage": "22",
+    "sellingPrice": "500"
   }
 ]
