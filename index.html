@@ -12,8 +12,17 @@
 </head>
 
 <body>
-    <h2>Krishna Paints, Hardware and Sanitory Store</h2>
-    <input type="text" id="search" placeholder="Kya dhundhna hai....." style="margin-bottom: 20px;"/>
+    <h2 style="margin-top: 30px; margin-bottom: 30px;">Krishna Paints, Hardware and Sanitory Store</h2>
+    <div>
+        <input type="text" id="search" placeholder="Kya dhundhna hai....." style="margin-bottom: 20px;"/>
+        <select id="category-dropdown">
+            <option value="">Sab Kuch</option>
+            <option value="paint">Paint</option>
+            <option value="hardware">Hardware</option>
+            <option value="sanitory">Sanitory</option>
+        </select>
+    </div>
+    
     <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add new Item</button>
     
     <div id="results" style="margin-top: 30px; margin-bottom: 30px;"></div>
@@ -36,9 +45,9 @@
                     <div class="form-group">
                       <label for="new-item-type">Type</label>
                       <select class="form-control" id="new-item-type">
-                        <option>paint</option>
-                        <option>distemper</option>
-                        <option>putty</option>
+                        <option value="paint">Paint</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="sanitory">Sanitory</option>
                       </select>
                     </div>
                     <div class="form-group">
@@ -57,7 +66,7 @@
                   </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-edit-button">Close</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-details-button">Save changes</button>
             </div>
           </div>
