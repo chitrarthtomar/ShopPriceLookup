@@ -61,7 +61,7 @@ const showItems = async () => {
                 </tr>`;
   table.innerHTML += th;
   let i = 1;
-  //products.sort((a, b) => (a.type > b.type) ? 1 : -1);
+  products.sort((a, b) => (a.type > b.type) ? 1 : -1);
 
   products
     .filter((product) =>
@@ -89,7 +89,7 @@ const showItems = async () => {
       product_type.innerText = product.type.toUpperCase();
       switch (product.type) {
         case "paint":
-          tr.style.cssText = "background-color: salmon";
+          tr.style.cssText = "background-color: pink";
           break;
         case "hardware":
           tr.style.cssText = "background-color: cornflowerblue;";
