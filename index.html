@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Krishna Paints, Hardware and Sanitory Store</title>
+    <meta name="description" content="Krishna Hardware" />
+    <meta name="author" content="Chitrarth Tomar" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <h2 style="margin-top: 30px; color: darkorchid;" class="display-4">
+      Krishna Paints, Hardware and Sanitory Store
+    </h2>
+    <div>
+      <input
+        type="text"
+        id="search"
+        placeholder="Kya dhundhna hai....."
+        style="margin-bottom: 20px"
+      />
+      <select id="category-dropdown">
+        <option value="">Sab Kuch</option>
+        <option value="paint">Paint</option>
+        <option value="hardware">Hardware</option>
+        <option value="sanitory">Sanitory</option>
+      </select>
+    </div>
+
+    <button
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#exampleModal"
+    >
+      Add new Item
+    </button>
+
+    <div id="results" style="margin-top: 30px; margin-bottom: 30px"></div>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="new-item-name">Name</label>
+                <input
+                  type="name"
+                  class="form-control"
+                  id="new-item-name"
+                  placeholder="Enter Name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="new-item-type">Type</label>
+                <select class="form-control" id="new-item-type">
+                  <option value="paint">Paint</option>
+                  <option value="hardware">Hardware</option>
+                  <option value="sanitory">Sanitory</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="new-item-cp">Cost Price</label>
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="new-item-cp"
+                  placeholder="Enter Cost Price"
+                />
+              </div>
+              <div class="form-group">
+                <label for="new-item-cartage">Cartage</label>
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="new-item-cartage"
+                  placeholder="Enter Cartage"
+                />
+              </div>
+              <div class="form-group">
+                <label for="new-item-sp">Selling Price</label>
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="new-item-sp"
+                  placeholder="Enter Selling Price"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              id="close-edit-button"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              id="save-details-button"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script src="bootstrap/js/bootstrap.bundle.min.js" ></script> -->
+    <script src="jquery-3.2.1.slim.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="popper.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="searchLogic.js"></script>
+  </body>
+</html>
